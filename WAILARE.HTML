@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wailare Cosmetics | Premium Beauty & Skincare Solutions</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary-color: #8b1538; /* Deep Executive Burgundy/Rose */
+      --primary-hover: #6b0f2a;
+      --accent-color: #d4af37;  /* Luxury Gold Accent */
+      --dark-color: #111111;
+      --light-bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-muted: #6c757d;
+      --border-color: #e9ecef;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      color: var(--dark-color);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Top Announcement Bar */
+    .top-bar {
+      background: var(--dark-color);
+      color: var(--accent-color);
+      text-align: center;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* Navigation Header */
+    header {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .brand-logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-logo i {
+      color: var(--accent-color);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary-color);
+    }
+
+    .cart-badge {
+      background: var(--primary-color);
+      color: #fff;
+      border-radius: 50%;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.75rem;
+      margin-left: 0.3rem;
+    }
+
+    /* Main Container Layout */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .page-section {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Corporate Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80') center/cover;
+      border-radius: 12px;
+      padding: 6rem 2rem;
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: #e0e0e0;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: #ffffff;
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background-color: #25D366;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #1eb954;
+    }
+
+    /* Corporate Metrics Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+      text-align: center;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      padding: 1.8rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid var(--border-color);
+    }
+
+    .stat-card h3 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    .stat-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--accent-color);
+      margin: 0.6rem auto 0;
+    }
+
+    /* Search Bar */
+    .search-bar-container {
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      position: relative;
+    }
+
+    .search-bar-container input {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid var(--border-color);
+      border-radius: 30px;
+      outline: none;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    /* Products Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .product-price {
+      font-size: 1.15rem;
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .product-actions {
+      margin-top: auto;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-sm {
+      padding: 0.5rem;
+      font-size: 0.85rem;
+      flex: 1;
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    /* Executive Leadership / Owner Section */
+    .leadership-section {
+      margin-top: 4rem;
+    }
+
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .leader-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      text-align: center;
+    }
+
+    .leader-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 1.2rem;
+      border: 2px solid var(--border-color);
+    }
+
+    .leader-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .leader-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Corporate About Us Cards */
+    .about-box {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    /* Contact Page Layout */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item i {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+      margin-top: 0.2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--primary-color);
+    }
+
+    /* Cart Table */
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      border: 1px solid var(--border-color);
+    }
+
+    .cart-table th, .cart-table td {
+      padding: 1.2rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .cart-table th {
+      background: #fafafa;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-color);
+      color: #ffffff;
+      padding: 3rem 1.5rem 1.5rem;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent-color);
+    }
+
+    .footer-col p, .footer-col li {
+      font-size: 0.9rem;
+      color: #b0b0b0;
+      line-height: 1.7;
+      list-style: none;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #222;
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .nav-links { gap: 1rem; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <i class="fa-solid fa-truck-fast"></i> Premium Cosmetics & Beauty Supply Across Nigeria | Order Online via WhatsApp
+  </div>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-logo" onclick="switchPage('home')">
+        <i class="fa-solid fa-crown"></i> WAILARE
+      </a>
+      <ul class="nav-links">
+        <li><a id="nav-home" class="active" onclick="switchPage('home')">Home</a></li>
+        <li><a id="nav-products" onclick="switchPage('products')">Products</a></li>
+        <li><a id="nav-about" onclick="switchPage('about')">About Us</a></li>
+        <li><a id="nav-contact" onclick="switchPage('contact')">Contact</a></li>
+        <li><a id="nav-cart" onclick="switchPage('cart')"><i class="fa-solid fa-bag-shopping"></i> Cart <span class="cart-badge" id="cartCount">0</span></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PAGE 1: HOME -->
+    <section id="page-home" class="page-section active">
+      <div class="hero">
+        <h1>WAILARE COSMETICS LTD.</h1>
+        <p>Elevating Beauty & Confidence with Executive Skincare, Fragrances, and Cosmetics Solutions.</p>
+        <button class="btn" onclick="switchPage('products')">Explore Our Collection</button>
+      </div>
+
+      <!-- Corporate Metrics -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>100%</h3>
+          <p>Authentic Products</p>
+        </div>
+        <div class="stat-card">
+          <h3>5,000+</h3>
+          <p>Satisfied Clients</p>
+        </div>
+        <div class="stat-card">
+          <h3>Fast</h3>
+          <p>Nationwide Delivery</p>
+        </div>
+        <div class="stat-card">
+          <h3>4.9 ★</h3>
+          <p>Customer Rating</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">Featured Beauty Goods</h2>
+      <div class="products-grid" id="featured-products"></div>
+    </section>
+
+    <!-- PAGE 2: PRODUCTS -->
+    <section id="page-products" class="page-section">
+      <h2 class="section-title">Our Cosmetic Collection (10 Primary Goods)</h2>
+      
+      <!-- Search Filter -->
+      <div class="search-bar-container">
+        <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search cosmetics by name...">
+      </div>
+
+      <div class="products-grid" id="all-products"></div>
+    </section>
+
+    <!-- PAGE 3: ABOUT US -->
+    <section id="page-about" class="page-section">
+      <h2 class="section-title">About Wailare Cosmetics</h2>
+      
+      <div class="about-box">
+        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Corporate Overview</h3>
+        <p>
+          Wailare Cosmetics is a premier beauty and skincare enterprise operating out of Kano State, Nigeria. We specialize in bringing high-grade cosmetics, luxurious perfumes, and advanced skincare essential products to clients seeking quality and elegance.
+        </p>
+        <br>
+        <p>
+          Our mission is to empower individuals by providing verified, safe, and premium beauty cosmetics backed by reliable customer care and swift regional logistics.
+        </p>
+      </div>
+
+      <!-- Executive Leadership / Photos Section (3 Photos) -->
+      <div class="leadership-section">
+        <h2 class="section-title">Executive Leadership</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Meet the visionary leadership steering Wailare Cosmetics forward.</p>
+
+        <div class="leadership-grid">
+          
+          <!-- Photo 1 -->
+          <div class="leader-card">
+            <!-- Replace image link in 'src' with your photo link -->
+            <img src="https://via.placeholder.com/400x500?text=CEO+Photo+1" alt="Managing Director" class="leader-img">
+            <h3>Managing Director / CEO</h3>
+            <p>Wailare Cosmetics Executive</p>
+          </div>
+
+          <!-- Photo 2 -->
+          <div class="leader-card">
+            <!-- Replace image link in 'src' with your photo link -->
+            <img src="https://via.placeholder.com/400x500?text=HQ+Operations+Photo+2" alt="Operations" class="leader-img">
+            <h3>HQ Operations & Showroom</h3>
+            <p>Quality Assurance & Management</p>
+          </div>
+
+          <!-- Photo 3 -->
+          <div class="leader-card">
+            <!-- Replace image link in 'src' with your photo link -->
+            <img src="https://via.placeholder.com/400x500?text=Client+Logistics+Photo+3" alt="Logistics" class="leader-img">
+            <h3>Logistics & Client Relations</h3>
+            <p>Customer Experience & Distribution</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4: CONTACT & LOCATION -->
+    <section id="page-contact" class="page-section">
+      <h2 class="section-title">Get In Touch With Us</h2>
+      
+      <div class="contact-grid">
+        
+        <div class="contact-card">
+          <h3 style="margin-bottom: 1.5rem; color: var(--primary-color);">Headquarters & Showroom</h3>
+          
+          <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <strong>Corporate Address:</strong>
+              <p>Sabon Titi, Dorayi China, Kano State, Nigeria.</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <strong>GSM Phone Line:</strong>
+              <p>08038382440</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fa-brands fa-whatsapp"></i>
+            <div>
+              <strong>WhatsApp Business:</strong>
+              <p>+234 803 838 2440</p>
+            </div>
+          </div>
+
+          <a href="https://wa.me/2348038382440?text=Hello%20Wailare%20Cosmetics,%20I%20have%20an%20inquiry" class="btn btn-whatsapp" target="_blank" style="width: 100%; text-align: center; margin-top: 1rem;">
+            <i class="fa-brands fa-whatsapp"></i> Chat Live on WhatsApp
+          </a>
+        </div>
+
+        <div class="contact-card">
+          <h3 style="margin-bottom: 1.5rem; color: var(--primary-color);">Send an Inquiry Message</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="cName" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number (GSM)</label>
+              <input type="tel" id="cPhone" placeholder="Enter GSM number" required>
+            </div>
+            <div class="form-group">
+              <label>Inquiry Message</label>
+              <textarea id="cMessage" rows="4" placeholder="Detail the cosmetics products you require..." required></textarea>
+            </div>
+            <button type="submit" class="btn" style="width: 100%;">Submit Inquiry</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAGE 5: CART -->
+    <section id="page-cart" class="page-section">
+      <h2 class="section-title">Your Order Summary</h2>
+      
+      <div id="cartContent">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cartItems"></tbody>
+        </table>
+        <br>
+        <button class="btn btn-whatsapp" onclick="checkoutWhatsApp()" style="width: 100%; text-align: center; font-size: 1.05rem;">
+          <i class="fa-brands fa-whatsapp"></i> Complete Order via WhatsApp
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>WAILARE COSMETICS</h4>
+        <p>Your trusted hub for premium cosmetics, skin therapies, and luxury fragrances in Kano and beyond.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <li><a onclick="switchPage('home')" style="cursor:pointer;">Home</a></li>
+        <li><a onclick="switchPage('products')" style="cursor:pointer;">Products Collection</a></li>
+        <li><a onclick="switchPage('about')" style="cursor:pointer;">About Corporate</a></li>
+        <li><a onclick="switchPage('contact')" style="cursor:pointer;">Contact & Location</a></li>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Detail</h4>
+        <p>Sabon Titi, Dorayi China, Kano State.</p>
+        <p>GSM: 08038382440</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Wailare Cosmetics Ltd. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // 10 Products Dataset
+    const products = [
+      { id: 1, name: "Premium Foundation Cream", price: 3500, img: "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?auto=format&fit=crop&w=400&q=80" },
+      { id: 2, name: "Special Compact Face Powder", price: 2000, img: "https://images.unsplash.com/photo-1590156546946-ce55a12a6a5d?auto=format&fit=crop&w=400&q=80" },
+      { id: 3, name: "Luxury Lipstick Collection", price: 1500, img: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=80" },
+      { id: 4, name: "Nourishing Body Lotion Spray", price: 4000, img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80" },
+      { id: 5, name: "Precision Eyeliner & Mascara", price: 1800, img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=400&q=80" },
+      { id: 6, name: "Long-lasting Perfume Oil", price: 2500, img: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=400&q=80" },
+      { id: 7, name: "Exfoliating Face Scrub & Wash", price: 3000, img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=400&q=80" },
+      { id: 8, name: "Glossy Nail Polish Set", price: 1200, img: "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=400&q=80" },
+      { id: 9, name: "Radiant Skin Glow Oil", price: 5000, img: "https://images.unsplash.com/photo-1608248597261-833258657640?auto=format&fit=crop&w=400&q=80" },
+      { id: 10, name: "Professional Makeup Brush Set", price: 4500, img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=80" }
+    ];
+
+    let cart = [];
+
+    // Switch Page Navigation Function
+    function switchPage(pageId) {
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+      document.getElementById('page-' + pageId).classList.add('active');
+      const activeNav = document.getElementById('nav-' + pageId);
+      if(activeNav) activeNav.classList.add('active');
+      window.scrollTo(0,0);
+    }
+
+    // Render Products Grid
+    function renderProducts(itemsToRender = products) {
+      const allContainer = document.getElementById('all-products');
+      const featuredContainer = document.getElementById('featured-products');
+      
+      allContainer.innerHTML = '';
+      if(featuredContainer) featuredContainer.innerHTML = '';
+
+      itemsToRender.forEach((p, index) => {
+        const cardHTML = `
+          <div class="product-card">
+            <img src="${p.img}" alt="${p.name}" class="product-img">
+            <div class="product-info">
+              <div class="product-title">${p.name}</div>
+              <div class="product-price">₦${p.price.toLocaleString()}</div>
+              <div class="product-actions">
+                <button class="btn btn-sm" onclick="addToCart(${p.id})">Add to Cart</button>
+                <a href="https://wa.me/2348038382440?text=Hello%20Wailare%20Cosmetics,%20I%20want%20to%20order%20${encodeURIComponent(p.name)}" class="btn btn-sm btn-whatsapp" target="_blank">Order</a>
+              </div>
+            </div>
+          </div>
+        `;
+
+        allContainer.innerHTML += cardHTML;
+        if (featuredContainer && index < 4) {
+          featuredContainer.innerHTML += cardHTML;
+        }
+      });
+    }
+
+    // Filter Search Bar
+    function filterProducts() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+      renderProducts(filtered);
+    }
+
+    // Cart Management
+    function addToCart(id) {
+      const item = products.find(p => p.id === id);
+      cart.push(item);
+      updateCartUI();
+      alert(item.name + ' added to cart successfully!');
+    }
+
+    function updateCartUI() {
+      document.getElementById('cartCount').innerText = cart.length;
+      const cartItemsContainer = document.getElementById('cartItems');
+      cartItemsContainer.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<tr><td colspan="3" style="text-align:center; color: var(--text-muted);">Your cart is currently empty.</td></tr>';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        cartItemsContainer.innerHTML += `
+          <tr>
+            <td><strong>${item.name}</strong></td>
+            <td>₦${item.price.toLocaleString()}</td>
+            <td><button onclick="removeFromCart(${index})" style="color:red; border:none; background:none; cursor:pointer; font-weight:600;">Remove</button></td>
+          </tr>
+        `;
+      });
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) {
+        alert("Please add products to your cart before proceeding!");
+        return;
+      }
+      let text = "Hello Wailare Cosmetics Ltd,%0A%0AI would like to place an order for the following items:%0A";
+      let total = 0;
+      cart.forEach((item, i) => {
+        text += `${i+1}. ${item.name} - ₦${item.price.toLocaleString()}%0A`;
+        total += item.price;
+      });
+      text += `%0ATotal Estimated Amount: ₦${total.toLocaleString()}`;
+      window.open(`https://wa.me/2348038382440?text=${text}`, '_blank');
+    }
+
+    // Contact Form Handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('cName').value;
+      const phone = document.getElementById('cPhone').value;
+      const msg = document.getElementById('cMessage').value;
+
+      const text = `Hello Wailare Cosmetics,%0A%0AInquiry Details:%0AName: ${encodeURIComponent(name)}%0AGSM Line: ${encodeURIComponent(phone)}%0AMessage: ${encodeURIComponent(msg)}`;
+      window.open(`https://wa.me/2348038382440?text=${text}`, '_blank');
+    });
+
+    // Initialize App
+    renderProducts();
+    updateCartUI();
+  </script>
+</body>
+</html>
